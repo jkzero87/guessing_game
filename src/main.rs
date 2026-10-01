@@ -7,16 +7,20 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("The secret number is: {secret_number}");
-
     loop {
         println!("Please input your guess.");
 
         let mut guess = String::new();
 
-        io::stdin()
+        let bytes_read = io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
+
+        // End of input (Ctrl-D): stop instead of looping forever.
+        if bytes_read == 0 {
+            println!("No more input. The number was {secret_number}.");
+            break;
+        }
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
