@@ -1,4 +1,4 @@
-# Guessing Game 🎯
+# Guessing Game
 
 A command-line number guessing game built in Rust, following Chapter 2 of [The Rust Programming Language Book](https://doc.rust-lang.org/book/).
 
